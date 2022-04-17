@@ -20,12 +20,11 @@
         socket.on('disconnect', () => {
            console.log('Desconectado del servidor') 
         })
-
-        socket.emit('mensaje', { nombre: 'Nicolas'})
-
-        socket.on('mensaje', (payload)=> {
-            console.log(`mesaje: ${payload.admin}`)
+        
+        socket.on('nuevo-mensaje', (payload) => {
+            console.log(`${payload.user}: ${payload.mensaje}`)
         })
+
     </script>
 </body>
 </html>
