@@ -10,6 +10,13 @@ io.on('connection', client => {
     client.on('mensaje', (payload) => {
         console.log(`Mensaje: ${payload.nombre}`)
 
-        io.emit('mensaje', { admin: 'Nuevo mensaje'})
-   })
+        client.emit('mensaje', { admin: 'Nuevo mensaje'})
+    })
+    
+    client.on('emitir-mensaje', (payload) => {
+        console.log(`${payload.user}: ${payload.mensaje}`)
+
+        // client.emit('nuevo-mensaje', { mensaje: payload})
+        client.broadcast.emit('nuevo-mensaje', payload)
+    })
 })
