@@ -24,6 +24,11 @@
         socket.on('nuevo-mensaje', (payload) => {
             console.log(`${payload.user}: ${payload.mensaje}`)
         })
+        
+        socket.on('active-bands', (payload) => {
+            console.clear()
+            console.table(payload)
+        })
 
     </script>
 </body>
